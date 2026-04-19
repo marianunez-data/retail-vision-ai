@@ -1,12 +1,10 @@
 # RetailVision AI — Retail Shelf Gap Detection
 
-Real-time stockout detection system using*YOLO11n for retail shelf monitoring. Identifies empty shelf spaces (gaps) from camera images to enable faster restocking and reduce revenue loss.
+Real-time stockout detection system using **YOLO11n** for retail shelf monitoring. Identifies empty shelf spaces (gaps) from camera images to enable faster restocking and reduce revenue loss.
 
-![Python](https://img.shields.io/badge/Python-3.12-blue)
-![YOLO11](https://img.shields.io/badge/YOLO11-nano-purple)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)
-![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+[![Live Demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://retail-vision-ai.streamlit.app/)
+
+**[Try the live demo →](https://retail-vision-ai.streamlit.app/)**
 
 ---
 
