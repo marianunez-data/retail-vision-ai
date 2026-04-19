@@ -36,3 +36,4 @@ models/**/last.pt
 models/**/predictions.json
 models/**/train_batch*.jpg
 uv.lock
+artifacts/
