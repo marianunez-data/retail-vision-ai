@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# YOLO pretrained (auto-descargados, NO trackear)
+/yolo*.pt
+notebooks/yolo*.pt
+
+# Pero SÍ trackear el modelo entrenado
+!models/**/weights/*.pt
+
+# Data (demasiado pesado para git)
+data/raw/
+data/processed/
+data/processed_backup_before_clean/
+
+# MLflow (local tracking, no subir)
+mlruns/
+runs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Generated files (not for repo)
+models/**/last.pt
+models/**/predictions.json
+models/**/train_batch*.jpg
+uv.lock

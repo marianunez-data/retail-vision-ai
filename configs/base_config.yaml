@@ -1,0 +1,55 @@
+# =============================================================================
+# RetailVision AI - Project Configuration
+# =============================================================================
+# All hyperparameters and settings in ONE place.
+# Why YAML? Because changing a threshold should NOT require editing
+# Python code. You change the value here, the code reads it.
+# =============================================================================
+
+dataset:
+  name: "retail-shelf-availability"
+
+  # Single-class after EDA: class 0 ("product") annotations were
+  # visually verified as inconsistent/mislabeled. Only gap annotations
+  # (22,119 → 21,891 after removing <10px bboxes) are reliable.
+  num_classes: 1
+  class_names: ["gap"]
+
+  # Original images from Roboflow come at 416x416 pixels.
+  image_size: 416
+
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  data_yaml: "data/processed/data.yaml"
+  models: "models"
+  artifacts: "artifacts"
+training:
+  # yolo11n.pt = YOLOv11 NANO variant (2.6M params)
+  # Sufficient for single-class gap detection.
+  # Fastest inference for real-time shelf monitoring.
+  model: "yolo11n.pt"
+
+  # Fine-tuning: 50 epochs max, early stopping at patience=10.
+  epochs: 50
+  patience: 10
+
+    # RTX 4080 Laptop GPU (12.9 GB VRAM)
+  batch_size: 8
+
+  # YOLO upscales from 416 source to 640 for better small-gap detection.
+  image_size: 640
+
+inference:
+  # Starting point — will be optimized with Optuna after training.
+  # Priority: recall over precision (missed stockout cost >> false alert cost).
+  confidence_threshold: 0.45
+
+  # NMS threshold — universal standard, do not change.
+  iou_threshold: 0.50
+
+# Leakage-free split ratios applied by GroupShuffleSplit.
+split_ratios:
+  train: 0.70
+  valid: 0.15
+  test: 0.15
